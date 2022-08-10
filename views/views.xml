@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="ir.ui.view" id="categorias_reporte_tree">
+      <field name="name">catalogos_catax.tree</field>
+      <field name="model">catalogos_catax</field>
+      <field name="arch" type="xml">
+        <tree delete="false" duplicate="false">  
+          <field name="id"/>
+          <field name="name"/>
+          <field name="clave"/>
+          <field name="descripcion"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record id="categorias_reporte_form" model="ir.ui.view">
+      <field name="name">catalogos_cataxform</field>
+      <field name="model">catalogos_catax</field>
+      <field name="arch" type="xml">
+        <form delete="false" duplicate="false">
+          <sheet>
+              <group>
+                <group  string="Categoría" >
+                  <field name="name"/>
+                  <field name="clave"/>
+                </group >
+                <group >
+                  <div class="oe_button_box" name="button_box">
+                    <button name="get_activo" type="object" class="oe_stat_button" icon="fa-check">
+                      <field name="activo" widget="boolean_button" options='{"terminology":  {
+                        "string_true": "Activo/a",
+                        "hover_true": "Desactivar",
+                        "string_false": "Inactivo",
+                        "hover_false": "Activar" }}'/>
+                    </button>
+                  </div>   
+                </group>  
+              </group >  
+              <group >
+                <field name="descripcion"/>
+                <field name="icono" widget="image"/>
+                <field name="prioridadCate"/>
+              </group>
+              <group >
+                <field name="areas_categoria">
+                  <tree editable="bottom">
+                    <field name="id_depto"/>
+                  </tree>
+                </field>
+              </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="categorias_reporte_action_window">
+      <field name="name">Categorías CATAX</field>
+      <field name="res_model">catalogos_catax</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="subcategorias_reporte_tree">
+      <field name="name">subcategorias_catax.tree</field>
+      <field name="model">subcategorias_catax</field>
+      <field name="arch" type="xml">
+        <tree delete="false" duplicate="false">
+          <field name="id"/>
+          <field name="name"/>
+          <field name="clave"/>
+          <field name="categoria"/>
+          <field name="descripcion"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="subcategorias_catax_reporte_form" model="ir.ui.view">
+        <field name="name">subcategorias_catax_reporte_form</field>
+        <field name="model">subcategorias_catax</field>
+        <field name="arch" type="xml">
+          <form delete="false" duplicate="false">
+            <sheet>
+              <group >
+                <group string="Subcategoría">
+                  <field name="name"/>
+                  <field name="clave"/>
+                </group >
+                <group >
+                  <div class="oe_button_box" name="button_box">
+                    <button name="get_activo" type="object" class="oe_stat_button" icon="fa-check">
+                      <field name="activo" widget="boolean_button" options='{"terminology":  {
+                        "string_true": "Activo/a",
+                        "hover_true": "Desactivar",
+                        "string_false": "Inactivo",
+                        "hover_false": "Activar" }}'/>
+                    </button>
+                  </div>   
+                </group>  
+              </group >       
+                <group >
+                  <field name="categoria"/>
+                  <field name="descripcion"/>
+                  <field name="etiquetas" widget="many2many_tags" options="{'open': True}" context="{'id_tag': id}" domain="[('id_tag','=',id)]"/>
+                  <field name="prioridadSub"/>
+                </group>
+            </sheet>
+          </form>
+        </field>
+      </record>
+    
+
+    <record model="ir.actions.act_window" id="subcategorias_catax_reporte_action_window">
+      <field name="name">Subcategorías</field>
+      <field name="res_model">subcategorias_catax</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+   
+    <!-- <menuitem name="Subcategorías" id="submenu_subcategorias_catax" parent="menu_principal_categorias" groups="catalogo_catax.categorias_admin"/> -->
+
+
+    <record id="folios_action" model="ir.actions.act_window">
+      <field name="name">Folios Ayuntamiento</field>
+      <field name="res_model">subcategorias_catax.folios</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- Form view ayto_functions.folios -->
+    <record id="folios_form" model="ir.ui.view">
+      <field name="name">Folios Ayuntamiento</field>
+      <field name="model">subcategorias_catax.folios</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="odoo_model"/>
+              <field name="model_name" invisible="1"/>
+              <field name="year" widget="regex_mask" data-inputmask-regex="^\d{4}$"/>
+              <field name="folio"/>
+              <field name="reinicio" widget="radio" options="{'horizontal': true}"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Tree view ayto_functions.folios -->
+    <record id="folios_tree" model="ir.ui.view">
+      <field name="name">Lista de Folios Ayuntamiento</field>
+      <field name="model">subcategorias_catax.folios</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="odoo_model"/>
+          <field name="year"/>
+          <field name="folio"/>
+          <field name="reinicio"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Menús. Localizados en el submenú en Opciones técnicas de Odoo -->
+    <menuitem name="Ayto. Config CATAX." id="ayto_settings_menu"        parent="base.menu_administration" sequence="30"/>
+    <menuitem name="Folios CATAX"        id="ayto_settings_folios_menu" parent="ayto_settings_menu"       sequence="1" action="folios_action"/>
+
+
+
+    <menuitem name="Categorías CATAX" id="menu_principal_categorias" sequence="1" groups="catalogo_catax.categorias_admin"/>
+    <menuitem name="Categorías CATAX" id="submenu_categorias" parent="menu_principal_categorias" groups="catalogo_catax.categorias_admin"/>
+    <menuitem name="Categoría" id="crear_categorias_reporte" action="categorias_reporte_action_window" parent="submenu_categorias" sequence="2" groups="catalogo_catax.categorias_admin"/>
+    <menuitem name="Subcategoría" id="crear_subcategorias_catax_reporte" action="subcategorias_catax_reporte_action_window" parent="submenu_categorias"  groups="catalogo_catax.categorias_admin"/>
+  
+  
+</odoo>

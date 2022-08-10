@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_catalogos_catax_catalogos_catax,catalogos_catax,catalogo_catax.model_catalogos_catax,catalogo_catax.categorias_admin,1,1,1,1
+subcatalog_catax,sub catalogo catax,catalogo_catax.model_subcategorias_catax,catalogo_catax.categorias_admin,1,1,1,1
