@@ -159,8 +159,8 @@
     </record>
 
     <!-- Menús. Localizados en el submenú en Opciones técnicas de Odoo -->
-    <menuitem name="Ayto. Config CATAX." id="ayto_settings_menu"        parent="base.menu_administration" sequence="30"/>
-    <menuitem name="Folios CATAX"        id="ayto_settings_folios_menu" parent="ayto_settings_menu"       sequence="1" action="folios_action"/>
+    <menuitem name="Reporte ciudadano." id="ayto_settings_menu"        parent="base.menu_administration" sequence="30"/>
+    <menuitem name="Folios Reporte ciudadano"        id="ayto_settings_folios_menu" parent="ayto_settings_menu"       sequence="1" action="folios_action"/>
 
 
 
