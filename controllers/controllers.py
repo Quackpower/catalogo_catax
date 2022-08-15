@@ -48,6 +48,7 @@ class CatalogosCatax(http.Controller):
                         'subcategoria' : y.name,
                         'desc' : y.descripcion,
                         'clave' : y.clave,
+                        'icono' : str(y.icono),
                         'prioridad': y.prioridadSub,
                         'etiquetas': etiqueta
                     })

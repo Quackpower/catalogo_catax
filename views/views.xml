@@ -101,6 +101,7 @@
                 <group >
                   <field name="categoria"/>
                   <field name="descripcion"/>
+                  <field name="icono" widget="image"/>
                   <field name="etiquetas" widget="many2many_tags" options="{'open': True}" context="{'id_tag': id}" domain="[('id_tag','=',id)]"/>
                   <field name="prioridadSub"/>
                 </group>

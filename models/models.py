@@ -48,6 +48,7 @@ class subcategorias_catax(models.Model):
     prioridadSub = fields.Integer(string="Prioridad")
     activo   = fields.Boolean(string="Activo",  default=True)
     etiquetas = fields.One2many('subcategorias_catax.etiquetas', 'id_tag')
+    icono = fields.Binary(string="Icono para la categoría, se mostrara al usuario final")
 
     def get_activo(self, params):
         """ Jorge Luis López Cruz 14/10/2020
