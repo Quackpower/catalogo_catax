@@ -102,11 +102,11 @@ class subcategorias_catax_etiquetas(models.Model):
         return super(subcategorias_catax_etiquetas, self).read(fields, load=load)
 class ayto_folios(models.Model):
     """
-    	Creado por H.Stivalet
-    	Fecha de Creación: 2019-10-08
-    	Descripción: Módulo encargado de almacenar la foliación de registros del Ayuntamiento de Xalapa
+        Creado por H.Stivalet
+        Fecha de Creación: 2019-10-08
+        Descripción: Módulo encargado de almacenar la foliación de registros del Ayuntamiento de Xalapa
     """
-    _name = 'subcategorias_catax.folios'			 
+    _name = 'subcategorias_catax.folios'             
     _rec_name = 'model_name'
 
     odoo_model = fields.Many2one('ir.model', string='Modelo de Odoo', required=True, index=True, ondelete="cascade")
@@ -117,13 +117,13 @@ class ayto_folios(models.Model):
 
     def get_folio(self, model_name, increase=True):
         """
-        	Creado por H.Stivalet
-        	Fecha de Creación: 2019-10-09
-        	Descripción: Obtiene el consecutivo para un modelo de Odoo
-        	args:
-        		model_name(str): Modelo de Odoo (Tabla física de Postgres). No debe ser el Módulo si no el Modelo (usualmente: modulo_odoo.modelo)
-        		increase(Bool): Incrementa el foliador reservando el folio al registro que lo solicito (enviar false solo para consultar el folio actual)
-        	return(int): Folio correspondiente del modelo
+            Creado por H.Stivalet
+            Fecha de Creación: 2019-10-09
+            Descripción: Obtiene el consecutivo para un modelo de Odoo
+            args:
+                model_name(str): Modelo de Odoo (Tabla física de Postgres). No debe ser el Módulo si no el Modelo (usualmente: modulo_odoo.modelo)
+                increase(Bool): Incrementa el foliador reservando el folio al registro que lo solicito (enviar false solo para consultar el folio actual)
+            return(int): Folio correspondiente del modelo
         """
         try:
             foliador = self.env['subcategorias_catax.folios']
@@ -133,13 +133,13 @@ class ayto_folios(models.Model):
                 # Al no haber registros para el modelo enviado, busca el modelo y lo inserta en el foliador
                 model_id = self.env['ir.model'].search([('model','=',model_name)]).id
                 if not model_id:
-                	raise ValueError('El modelo ' + model_name + ' no fue e contrado en el sistema')
+                    raise ValueError('El modelo ' + model_name + ' no fue e contrado en el sistema')
                 foliador.sudo().create({
-                	'odoo_model': model_id,
-                	'model_name': model_name,
-                	'year': current_year,
-                	'folio': 1,
-                	'reinicio': 'N'
+                    'odoo_model': model_id,
+                    'model_name': model_name,
+                    'year': current_year,
+                    'folio': 1,
+                    'reinicio': 'N'
                 })
                 return 1
             elif not increase: # Solo regresa el folio actual
@@ -148,14 +148,14 @@ class ayto_folios(models.Model):
                 if current_year != current_folio.year:
                     current_folio.year = current_year # Actualiza el año en el foliador
                     if current_folio.reinicio == 'S':
-                    	current_folio.folio = 1 # Reinicia el Foliador por cambio de año
+                        current_folio.folio = 1 # Reinicia el Foliador por cambio de año
                     else:
-                    	current_folio.folio += 1 # Solo incrementa el foliador
+                        current_folio.folio += 1 # Solo incrementa el foliador
                 else: # Es el mismo año
-                	current_folio.folio += 1 # Incrementa el foliador
+                    current_folio.folio += 1 # Incrementa el foliador
                 return current_folio.folio
         except Exception as er:
-        	raise er
+            raise er
 
 class relacion_categoria_areas(models.Model):
     _name = 'subcategorias_catax.relacion_categoria_areas'
