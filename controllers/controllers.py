@@ -13,15 +13,15 @@ import base64, os
 from os.path import dirname
 from werkzeug.utils import secure_filename
 
-class CatalogosReporte(http.Controller):
-    @http.route('/reporte/categorias_subcategorias/', type='http', auth='public', website=True, cors='*', csrf=False)
+class CatalogosCatax(http.Controller):
+    @http.route('/catax/categorias_subcategorias/', type='http', auth='public', website=True, cors='*', csrf=False)
     def categorias_subcategorias(self, **kw):
         data = {'status': False}
         try:
 
 
             # Obtiene la tabla 
-            categorias = http.request.env['catalogos_reporte'].sudo().search([('activo','=', True)], order='prioridadCate asc')
+            categorias = http.request.env['catalogos_catax'].sudo().search([('activo','=', True)], order='prioridadCate asc')
             data['categorias'] = []
             data['subcategorias'] = []
 
@@ -35,7 +35,7 @@ class CatalogosReporte(http.Controller):
                     'detalles': x.detalles
                 })
 
-                subcategorias = http.request.env['subcategorias_reporte'].sudo().search([('categoria','=',x.name),('activo','=', True)], order='prioridadSub asc')
+                subcategorias = http.request.env['subcategorias_catax'].sudo().search([('categoria','=',x.name),('activo','=', True)], order='prioridadSub asc')
 
                 for y in subcategorias:
                     etiqueta = []
