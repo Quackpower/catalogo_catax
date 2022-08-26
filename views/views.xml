@@ -165,7 +165,7 @@
 
 
 
-    <menuitem name="Categorías CMAS" id="menu_principal_categorias" sequence="1" groups="catalogo_catax.categorias_admin"/>
+    <menuitem name="Categorías CMAS" id="menu_principal_categorias" sequence="10" groups="catalogo_catax.categorias_admin"/>
     <menuitem name="Categorías CMAS" id="submenu_categorias" parent="menu_principal_categorias" groups="catalogo_catax.categorias_admin"/>
     <menuitem name="Categoría" id="crear_categorias_reporte" action="categorias_reporte_action_window" parent="menu_principal_categorias" sequence="2" groups="catalogo_catax.categorias_admin"/>
     <menuitem name="Subcategoría" id="crear_subcategorias_catax_reporte" action="subcategorias_catax_reporte_action_window" parent="menu_principal_categorias"  groups="catalogo_catax.categorias_admin"/>
