@@ -2,8 +2,8 @@
 <odoo>
 
     <record model="ir.ui.view" id="categorias_reporte_tree">
-      <field name="name">catalogos_catax.tree</field>
-      <field name="model">catalogos_catax</field>
+      <field name="name">catalogos_reporte.tree</field>
+      <field name="model">catalogos_reporte</field>
       <field name="arch" type="xml">
         <tree delete="false" duplicate="false">  
           <field name="id"/>
@@ -15,8 +15,8 @@
     </record>
     
     <record id="categorias_reporte_form" model="ir.ui.view">
-      <field name="name">catalogos_cataxform</field>
-      <field name="model">catalogos_catax</field>
+      <field name="name">catalogos_reporteform</field>
+      <field name="model">catalogos_reporte</field>
       <field name="arch" type="xml">
         <form delete="false" duplicate="false">
           <sheet>
@@ -56,14 +56,14 @@
     <!-- actions opening views on models -->
     
     <record model="ir.actions.act_window" id="categorias_reporte_action_window">
-      <field name="name">Categorías CATAX</field>
-      <field name="res_model">catalogos_catax</field>
+      <field name="name">Categorías reporte</field>
+      <field name="res_model">catalogos_reporte</field>
       <field name="view_mode">tree,form</field>
     </record>
 
     <record model="ir.ui.view" id="subcategorias_reporte_tree">
-      <field name="name">subcategorias_catax.tree</field>
-      <field name="model">subcategorias_catax</field>
+      <field name="name">subcategorias_reporte.tree</field>
+      <field name="model">subcategorias_reporte</field>
       <field name="arch" type="xml">
         <tree delete="false" duplicate="false">
           <field name="id"/>
@@ -75,9 +75,9 @@
       </field>
     </record>
 
-    <record id="subcategorias_catax_reporte_form" model="ir.ui.view">
-        <field name="name">subcategorias_catax_reporte_form</field>
-        <field name="model">subcategorias_catax</field>
+    <record id="subcategorias_reporte_reporte_form" model="ir.ui.view">
+        <field name="name">subcategorias_reporte_reporte_form</field>
+        <field name="model">subcategorias_reporte</field>
         <field name="arch" type="xml">
           <form delete="false" duplicate="false">
             <sheet>
@@ -111,25 +111,25 @@
       </record>
     
 
-    <record model="ir.actions.act_window" id="subcategorias_catax_reporte_action_window">
+    <record model="ir.actions.act_window" id="subcategorias_reporte_reporte_action_window">
       <field name="name">Subcategorías</field>
-      <field name="res_model">subcategorias_catax</field>
+      <field name="res_model">subcategorias_reporte</field>
       <field name="view_mode">tree,form</field>
     </record>
    
-    <!-- <menuitem name="Subcategorías" id="submenu_subcategorias_catax" parent="menu_principal_categorias" groups="catalogo_catax.categorias_admin"/> -->
+    <!-- <menuitem name="Subcategorías" id="submenu_subcategorias_reporte" parent="menu_principal_categorias" groups="catalogo_reporte.categorias_admin"/> -->
 
 
     <record id="folios_action" model="ir.actions.act_window">
       <field name="name">Folios Ayuntamiento</field>
-      <field name="res_model">subcategorias_catax.folios</field>
+      <field name="res_model">subcategorias_reporte.folios</field>
       <field name="view_mode">tree,form</field>
     </record>
     
     <!-- Form view ayto_functions.folios -->
     <record id="folios_form" model="ir.ui.view">
       <field name="name">Folios Ayuntamiento</field>
-      <field name="model">subcategorias_catax.folios</field>
+      <field name="model">subcategorias_reporte.folios</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
@@ -148,7 +148,7 @@
     <!-- Tree view ayto_functions.folios -->
     <record id="folios_tree" model="ir.ui.view">
       <field name="name">Lista de Folios Ayuntamiento</field>
-      <field name="model">subcategorias_catax.folios</field>
+      <field name="model">subcategorias_reporte.folios</field>
       <field name="arch" type="xml">
         <tree>
           <field name="odoo_model"/>
@@ -165,10 +165,10 @@
 
 
 
-    <menuitem name="Categorías CATAX" id="menu_principal_categorias" sequence="1" groups="catalogo_catax.categorias_admin"/>
-    <menuitem name="Categorías CATAX" id="submenu_categorias" parent="menu_principal_categorias" groups="catalogo_catax.categorias_admin"/>
-    <menuitem name="Categoría" id="crear_categorias_reporte" action="categorias_reporte_action_window" parent="menu_principal_categorias" sequence="2" groups="catalogo_catax.categorias_admin"/>
-    <menuitem name="Subcategoría" id="crear_subcategorias_catax_reporte" action="subcategorias_catax_reporte_action_window" parent="menu_principal_categorias"  groups="catalogo_catax.categorias_admin"/>
+    <menuitem name="Categorías reporte" id="menu_principal_categorias" sequence="30" groups="catalogo_reporte.categorias_admin"/>
+    <menuitem name="Categorías reporte" id="submenu_categorias" parent="menu_principal_categorias" groups="catalogo_reporte.categorias_admin"/>
+    <menuitem name="Categoría" id="crear_categorias_reporte" action="categorias_reporte_action_window" parent="menu_principal_categorias" sequence="2" groups="catalogo_reporte.categorias_admin"/>
+    <menuitem name="Subcategoría" id="crear_subcategorias_reporte_reporte" action="subcategorias_reporte_reporte_action_window" parent="menu_principal_categorias"  groups="catalogo_reporte.categorias_admin"/>
   
   
 </odoo>
